@@ -8,16 +8,16 @@ public class Battery {
     }
 
     public void exchange(Battery another) {
-        this.load += another.load;
-        another.load = 0;
+        another.load += this.load;
+        this.load = 0;
     }
 
     public static void main(String[] args) {
-        Battery batteryOne = new Battery(60);
-        Battery batteryTwo = new Battery(140);
+        Battery batteryOne = new Battery(140);
+        Battery batteryTwo = new Battery(0);
         System.out.println("Battery one load is " + batteryOne.load);
         System.out.println("Battery two load is " + batteryTwo.load);
-        batteryTwo.exchange(batteryOne);
+        batteryOne.exchange(batteryTwo);
         System.out.println("Battery one load is " + batteryOne.load);
         System.out.println("Battery two load is " + batteryTwo.load);
     }

@@ -1,3 +1,4 @@
+
 package ru.job4j.tracker.oop;
 
 import static java.lang.Math.sqrt;
@@ -38,7 +39,7 @@ public class Point {
         double dist = a.distance(b);
         System.out.println(dist);
         Point c = new Point(0, 0, 0);
-        Point d = new Point(0, 8, 8);
-        System.out.println(d.distance(c));
+        Point d = new Point(0, 0, 2);
+        System.out.println(c.distance3d(d));
     }
 }

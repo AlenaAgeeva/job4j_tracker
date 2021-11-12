@@ -23,8 +23,8 @@ public class TriangleTest {
         Point a = new Point(1, 2, 0);
         Point b = new Point(1, 2, 0);
         Point c = new Point(1, 2, 0);
-        Triangle triangle = new Triangle(a, b, c);
-        double rsl = triangle.area();
+        Triangle tr = new Triangle(a, b, c);
+        double rsl = tr.area();
         double expected = -1;
         Assert.assertEquals(expected, rsl, 0.001);
     }

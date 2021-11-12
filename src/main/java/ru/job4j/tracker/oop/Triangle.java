@@ -20,14 +20,14 @@ public class Triangle {
     }
 
     public double area() {
-        double rsl = -1;
+        double result = -1;
         double ab = first.distance(second);
         double ac = first.distance(third);
         double bc = second.distance(third);
         if (this.exist(ab, ac, bc)) {
             double p = semiPerimeter(ab, ac, bc);
-            rsl = Math.sqrt(p * (p - ab) * (p - ac) * (p - bc));
+            result = Math.sqrt(p * (p - ab) * (p - ac) * (p - bc));
         }
-        return rsl;
+        return result;
     }
 }

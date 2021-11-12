@@ -22,7 +22,7 @@ public class Anestezi {
     }
 
     public void death() {
-        System.out.println("Patient was unable to handle pain shock without anestezi and now he is dead");
+        System.out.println("Patient was unable to handle pain shock and now he is dead");
     }
 
     public boolean isAnestetic() {

@@ -3,9 +3,9 @@ package ru.job4j.tracker.inheritance;
 public class Builder extends Engineer {
     private int experience;
 
-    public Builder(String name, String surname, String education, int birthday, String workPlace, int experience) {
-        super(name, surname, education, birthday, workPlace);
-        this.experience = experience;
+    public Builder(String name, String surname, String edu, int birth, String work, int exp) {
+        super(name, surname, edu, birth, work);
+        this.experience = exp;
     }
 
     public int getExperience() {

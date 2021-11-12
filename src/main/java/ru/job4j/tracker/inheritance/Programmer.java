@@ -3,9 +3,9 @@ package ru.job4j.tracker.inheritance;
 public class Programmer extends Engineer {
     private Language language;
 
-    public Programmer(String name, String surname, String education, int birthday, String workPlace, Language language) {
-        super(name, surname, education, birthday, workPlace);
-        this.language = language;
+    public Programmer(String n, String sName, String edu, int birth, String work, Language lang) {
+        super(n, sName, edu, birth, work);
+        this.language = lang;
     }
 
     public String changeLanguage(int i) {

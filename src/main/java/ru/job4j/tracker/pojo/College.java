@@ -9,7 +9,7 @@ public class College {
         s.setFullName("A.A.P");
         s.setGroup(7);
         System.out.printf("date: %s", s.getDate());
-        System.out.printf("\nname: %s", s.getFullName());
-        System.out.printf("\ngroup: %d", s.getGroup());
+        System.out.printf(System.lineSeparator() + "name: %s", s.getFullName());
+        System.out.printf(System.lineSeparator() + "group: %d", s.getGroup());
     }
 }

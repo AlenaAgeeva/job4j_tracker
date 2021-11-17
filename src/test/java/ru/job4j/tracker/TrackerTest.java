@@ -86,6 +86,6 @@ public class TrackerTest {
         tracker.add(bug);
         int id = bug.getId();
         tracker.delete(id);
-        Assert.assertEquals(tracker.findById(id), null);
+        Assert.assertNull(tracker.findById(id));
     }
 }

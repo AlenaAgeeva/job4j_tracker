@@ -1,5 +1,4 @@
 package ru.job4j.tracker.pojo;
-
 import java.util.Date;
 
 public class College {

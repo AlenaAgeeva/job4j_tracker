@@ -40,11 +40,24 @@ public class StartUITest {
         tracker.add(item);
         int id = item.getId();
         String[] answers = {
-                String.valueOf(id),
-                "deleted item"
+                String.valueOf(id)
         };
         StartUI.deleteItem(new StubInput(answers), tracker);
         Item result = tracker.findById(id);
         assertNull(result);
+    }
+
+    @Test
+    public void whenCreateItem() {
+        Input in = new StubInput(
+                new String[]{"0", "Item name", "1"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new CreateAction(),
+                new ExitAction()
+        };
+        new StartUI().init(in, tracker, actions);
+        assertThat(tracker.findAll()[0].getName(), is("Item name"));
     }
 }

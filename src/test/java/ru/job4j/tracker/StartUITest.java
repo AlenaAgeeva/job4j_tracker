@@ -33,7 +33,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Input in = new StubInput(
-                new String[]{"0", "1", replacedName, "1"}
+                new String[]{"0", String.valueOf(item.getId()), replacedName, "1"}
         );
         UserAction[] actions = {
                 new ReplaceItemAction(out),
@@ -49,7 +49,7 @@ public class StartUITest {
         Output out = new StubOutput();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(
-                new String[]{"0", "1", "1"}
+                new String[]{"0", String.valueOf(item.getId()), "1"}
         );
         UserAction[] actions = {
                 new DeleteItemAction(out),
@@ -124,9 +124,7 @@ public class StartUITest {
                         + "0. === Show all items ===" + ln
                         + "1. Exit" + ln
                         + "==== Show all items ====" + ln
-                        + "Item{id=1, name='test1', created="
-                        + one.getCreated().format(DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss"))
-                        + "}" + ln
+                        + one + ln
                         + "Menu." + ln
                         + "0. === Show all items ===" + ln
                         + "1. Exit" + ln
@@ -154,9 +152,7 @@ public class StartUITest {
                         + "0. === Find items by name ===" + ln
                         + "1. Exit" + ln
                         + "==== Find items by name ====" + ln
-                        + "Item{id=1, name='test1', created="
-                        + one.getCreated().format(DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss"))
-                        + "}" + ln
+                        + one + ln
                         + "Menu." + ln
                         + "0. === Find items by name ===" + ln
                         + "1. Exit" + ln
@@ -170,7 +166,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new StubInput(
-                new String[]{"0", "1", "1"}
+                new String[]{"0", String.valueOf(one.getId()), "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new FindItembyIdAction(out),
@@ -183,9 +179,7 @@ public class StartUITest {
                         + "0. === Find item by id ===" + ln
                         + "1. Exit" + ln
                         + "==== Find item by id ====" + ln
-                        + "Item{id=1, name='test1', created="
-                        + one.getCreated().format(DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss"))
-                        + "}" + ln
+                        + one + ln
                         + "Menu." + ln
                         + "0. === Find item by id ===" + ln
                         + "1. Exit" + ln

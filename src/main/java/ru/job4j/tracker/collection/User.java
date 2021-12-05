@@ -11,14 +11,6 @@ public class User implements Comparable<User> {
         this.age = age;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -38,9 +30,7 @@ public class User implements Comparable<User> {
 
     @Override
     public int compareTo(User o) {
-        if (this.getName().equals(o.getName())) {
-            return Integer.compare(getAge(), o.getAge());
-        }
-        return this.getName().compareTo(o.getName());
+        int rsl = name.compareTo(o.name);
+        return rsl != 0 ? rsl : Integer.compare(age, o.age);
     }
 }

@@ -13,25 +13,15 @@ public class BankService {
     }
 
     public void removeUser(User user) {
-        if (users.containsKey(user)) {
-            users.remove(user);
-        }
+        users.remove(user);
     }
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        if (user == null) {
-            System.out.println("User was not found by passport");
-            return;
-        }
-        for (Map.Entry<User, List<Account>> map : users.entrySet()) {
-            if (map.getKey().equals(user)) {
-                for (Account a : map.getValue()) {
-                    if (a.equals(account)) {
-                        return;
-                    }
-                }
-                map.getValue().add(account);
+        if (user != null) {
+            List<Account> list = users.get(user);
+            if (!list.contains(account)) {
+                list.add(account);
             }
         }
     }
@@ -50,16 +40,11 @@ public class BankService {
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
         Account account = null;
-        if (user == null) {
-            System.out.println("User was not found by passport");
-            return account;
-        }
-        for (Map.Entry<User, List<Account>> map : users.entrySet()) {
-            if (map.getKey().equals(user)) {
-                for (Account a : map.getValue()) {
-                    if (a.getRequisite().equals(requisite)) {
-                        account = a;
-                    }
+        if (user != null) {
+            List<Account> list = users.get(user);
+            for (Account ac : list) {
+                if (ac.getRequisite().equals(requisite)) {
+                    account = ac;
                 }
             }
         }

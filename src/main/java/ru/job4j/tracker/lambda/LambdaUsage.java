@@ -14,7 +14,7 @@ public class LambdaUsage {
         };
         Arrays.sort(str, (left, right) -> {
             System.out.println("compare - " + left.length() + " : " + right.length());
-            return right.length() - left.length();
+            return Integer.compare(right.length(), left.length());
         });
         for (String s : str) {
             System.out.println(s);

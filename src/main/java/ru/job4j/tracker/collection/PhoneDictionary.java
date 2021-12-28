@@ -11,7 +11,7 @@ public class PhoneDictionary {
 
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<>();
-        for (Person p : persons) {
+        for (var p : persons) {
             if (p.getPhone().contains(key)
                     || p.getAddress().contains(key)
                     || p.getName().contains(key)

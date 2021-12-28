@@ -2,6 +2,7 @@ package ru.job4j.tracker.collection;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import java.util.List;
 
 public class DepartmentsTest {

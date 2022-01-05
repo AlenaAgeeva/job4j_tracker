@@ -13,12 +13,14 @@ import java.util.stream.IntStream;
 public class CheckArray {
     /**
      * Method contains an algorithm using Arrays and IntStream methods
-     * It is working only with int[] arrays
+     * It works only with int[] arrays
      *
      * @param array that we must check
      * @return true or false
      */
     public static boolean isSorted(int[] array) {
-        return Arrays.compare(array, IntStream.of(array).sorted().toArray()) == 0;
+        return Arrays.compare(array, IntStream.of(array)
+                .sorted()
+                .toArray()) == 0;
     }
 }

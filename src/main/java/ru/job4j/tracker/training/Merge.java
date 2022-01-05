@@ -17,8 +17,7 @@ public class Merge {
      * @return new array with results
      */
     public static int[] merge(int[] left, int[] right) {
-        return IntStream
-                .concat(IntStream.of(left), IntStream.of(right))
+        return IntStream.concat(IntStream.of(left), IntStream.of(right))
                 .sorted()
                 .toArray();
     }

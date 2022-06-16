@@ -79,10 +79,7 @@ public class SqlTracker implements Store, AutoCloseable {
         try (PreparedStatement pr = cn.prepareStatement("select * from items")) {
             try (ResultSet resultSet = pr.executeQuery()) {
                 while (resultSet.next()) {
-                    items.add(new Item(
-                            resultSet.getInt("id"),
-                            resultSet.getString("name"),
-                            resultSet.getTimestamp("created").toLocalDateTime()));
+                    items.add(getItem(resultSet));
                 }
             }
         } catch (Exception e) {
@@ -98,10 +95,7 @@ public class SqlTracker implements Store, AutoCloseable {
             pr.setString(1, key);
             try (ResultSet resultSet = pr.executeQuery()) {
                 while (resultSet.next()) {
-                    items.add(new Item(
-                            resultSet.getInt("id"),
-                            resultSet.getString("name"),
-                            resultSet.getTimestamp("created").toLocalDateTime()));
+                    items.add(getItem(resultSet));
                 }
             }
         } catch (Exception e) {
@@ -116,13 +110,23 @@ public class SqlTracker implements Store, AutoCloseable {
         try (PreparedStatement pr = cn.prepareStatement("select * from items where id = ?")) {
             pr.setInt(1, id);
             try (ResultSet resultSet = pr.executeQuery()) {
-                while (resultSet.next()) {
-                    item = new Item(
-                            resultSet.getInt("id"),
-                            resultSet.getString("name"),
-                            resultSet.getTimestamp("created").toLocalDateTime());
+                if (resultSet.next()) {
+                    item = getItem(resultSet);
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return item;
+    }
+
+    public Item getItem(ResultSet resultSet) {
+        Item item = null;
+        try {
+            item = new Item(
+                    resultSet.getInt("id"),
+                    resultSet.getString("name"),
+                    resultSet.getTimestamp("created").toLocalDateTime());
         } catch (Exception e) {
             e.printStackTrace();
         }

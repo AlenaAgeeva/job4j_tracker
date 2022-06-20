@@ -1,0 +1,90 @@
+2022-06-20 15:09:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+insert into items (name,created) values(?,?) [42102-200]
+2022-06-20 15:09:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+select * from items where id = ? [42102-200]
+2022-06-20 15:09:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+delete from items [42102-200]
+2022-06-20 15:10:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+insert into items (name,created) values(?,?) [42102-200]
+2022-06-20 15:10:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+select * from items where id = ? [42102-200]
+2022-06-20 15:10:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+delete from items [42102-200]
+2022-06-20 15:13:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+insert into items (name,created) values(?,?) [42102-200]
+2022-06-20 15:13:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+select * from items where id = ? [42102-200]
+2022-06-20 15:13:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+delete from items [42102-200]
+2022-06-20 15:14:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+insert into items (name,created) values(?,?) [42102-200]
+2022-06-20 15:14:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+select * from items where id = ? [42102-200]
+2022-06-20 15:14:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+delete from items [42102-200]
+2022-06-20 15:16:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+insert into items (name,created) values(?,?) [42102-200]
+2022-06-20 15:16:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+select * from items where id = ? [42102-200]
+2022-06-20 15:16:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+delete from items [42102-200]
+2022-06-20 15:18:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+insert into items (name,created) values(?,?) [42102-200]
+2022-06-20 15:18:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+select * from items where id = ? [42102-200]
+2022-06-20 15:18:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+delete from items [42102-200]
+2022-06-20 15:22:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+insert into items (name,created) values(?,?) [42102-200]
+2022-06-20 15:22:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+select * from items where id = ? [42102-200]
+2022-06-20 15:22:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+delete from items [42102-200]
+2022-06-20 15:25:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+insert into items (name,created) values(?,?) [42102-200]
+2022-06-20 15:25:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+select * from items where id = ? [42102-200]
+2022-06-20 15:25:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+delete from items [42102-200]
+2022-06-20 15:27:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+insert into items (name,created) values(?,?) [42102-200]
+2022-06-20 15:27:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+select * from items where id = ? [42102-200]
+2022-06-20 15:27:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+delete from items [42102-200]
+2022-06-20 15:29:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+insert into items (name,created) values(?,?) [42102-200]
+2022-06-20 15:29:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+select * from items where id = ? [42102-200]
+2022-06-20 15:29:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found; SQL statement:
+delete from items [42102-200]

@@ -1,6 +1,9 @@
 package ru.job4j.tracker.store;
 
-import org.junit.*;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.SqlTracker;
 
@@ -12,7 +15,6 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class SqlTrackerTest {
@@ -52,7 +54,7 @@ public class SqlTrackerTest {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
         tracker.add(item);
-        assertEquals(tracker.findById(item.getId()), is(item));
+        assertThat(tracker.findById(item.getId()), is(item));
     }
 
 }

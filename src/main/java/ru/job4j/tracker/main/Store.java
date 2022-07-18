@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.main;
 
 import java.util.List;
 
@@ -8,6 +8,8 @@ public interface Store {
     boolean replace(int id, Item item);
 
     boolean delete(int id);
+
+    boolean deleteAll();
 
     List<Item> findAll();
 

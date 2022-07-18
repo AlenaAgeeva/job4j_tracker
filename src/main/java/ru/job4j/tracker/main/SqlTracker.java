@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.main;
 
 import java.io.*;
 import java.sql.*;
@@ -73,6 +73,17 @@ public class SqlTracker implements Store, AutoCloseable {
         boolean rlt = false;
         try (PreparedStatement pr = cn.prepareStatement("delete from items where id = ?")) {
             pr.setInt(1, id);
+            rlt = pr.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rlt;
+    }
+
+    @Override
+    public boolean deleteAll() {
+        boolean rlt = false;
+        try (PreparedStatement pr = cn.prepareStatement("delete * from items")) {
             rlt = pr.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();

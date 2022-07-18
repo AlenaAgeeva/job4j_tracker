@@ -1,7 +1,5 @@
 package ru.job4j.tracker.lambda;
 
-import ru.job4j.tracker.StubOutput;
-
 import java.util.Arrays;
 
 public class LambdaUsage {

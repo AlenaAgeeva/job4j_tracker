@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,5 +60,9 @@ public class MemTracker implements Store {
             items.remove(index);
         }
         return rsl;
+    }
+
+    public boolean deleteAll() {
+        return items.removeAll(items);
     }
 }

@@ -7,8 +7,7 @@ import ru.job4j.tracker.main.MemTracker;
 
 import java.util.List;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNull;
 
 public class MemTrackerTest {
     @Test

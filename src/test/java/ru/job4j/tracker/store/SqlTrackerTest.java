@@ -94,4 +94,14 @@ public class SqlTrackerTest {
         Item itemThree = tracker.add(new Item("item3"));
         assertEquals(tracker.findByName(itemOne.getName()), List.of(itemOne));
     }
+
+    @Test
+    public void whenRemoveItemThenDb() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item itemOne = tracker.add(new Item("item1"));
+        Item itemTwo = tracker.add(new Item("item2"));
+        Item itemThree = tracker.add(new Item("item3"));
+        tracker.delete(itemOne.getId());
+        assertEquals(tracker.findAll(), List.of(itemTwo, itemThree));
+    }
 }

@@ -44,7 +44,7 @@ public class StartUI {
                     new DeleteItemAction(output),
                     new DeleteManyItemsAction(output),
                     new ShowAllAction(output),
-                    new FindItembyIdAction(output),
+                    new FindItemByIdAction(output),
                     new FindItemsByNamesAction(output),
                     new ExitAction(output)
             );

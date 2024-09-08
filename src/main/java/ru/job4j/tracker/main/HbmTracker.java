@@ -8,7 +8,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class HbmTracker implements Store, AutoCloseable {
@@ -40,14 +40,13 @@ public class HbmTracker implements Store, AutoCloseable {
     public boolean replace(int id, Item item) {
         Session session = sf.openSession();
         Transaction transaction = session.beginTransaction();
-        boolean result = false;
         try {
             Item updatedItem = new Item();
             updatedItem.setId(id);
             updatedItem.setName(item.getName());
             session.update(updatedItem);
             transaction.commit();
-            result = true;
+            return true;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -57,12 +56,11 @@ public class HbmTracker implements Store, AutoCloseable {
                 session.close();
             }
         }
-        return result;
+        return false;
     }
 
     @Override
     public boolean delete(int id) {
-        boolean result = false;
         Session session = sf.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -70,7 +68,7 @@ public class HbmTracker implements Store, AutoCloseable {
             item.setId(id);
             session.remove(item);
             transaction.commit();
-            result = true;
+            return true;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -80,18 +78,17 @@ public class HbmTracker implements Store, AutoCloseable {
                 session.close();
             }
         }
-        return result;
+        return false;
     }
 
     @Override
     public boolean deleteAll() {
-        boolean result = false;
         Session session = sf.openSession();
         Transaction transaction = session.beginTransaction();
         try {
             findAll().forEach(session::remove);
             transaction.commit();
-            result = true;
+            return true;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -101,15 +98,14 @@ public class HbmTracker implements Store, AutoCloseable {
                 session.close();
             }
         }
-        return result;
+        return false;
     }
 
     @Override
     public List<Item> findAll() {
-        List<Item> items = new ArrayList<>();
         Session session = sf.openSession();
         try {
-            items = session.createQuery("FROM Item", Item.class).list();
+            return session.createQuery("FROM Item", Item.class).list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -117,17 +113,16 @@ public class HbmTracker implements Store, AutoCloseable {
                 session.close();
             }
         }
-        return items;
+        return Collections.emptyList();
     }
 
     @Override
     public List<Item> findByName(String key) {
-        List<Item> items = new ArrayList<>();
         Session session = sf.openSession();
         try {
             Query<Item> query = session.createQuery("FROM Item WHERE name = :key", Item.class);
             query.setParameter("key", key);
-            items = query.list();
+            return query.list();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -135,15 +130,14 @@ public class HbmTracker implements Store, AutoCloseable {
                 session.close();
             }
         }
-        return items;
+        return Collections.emptyList();
     }
 
     @Override
     public Item findById(int id) {
-        Item item = null;
         Session session = sf.openSession();
         try {
-            item = session.get(Item.class, id);
+            return session.get(Item.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -151,7 +145,7 @@ public class HbmTracker implements Store, AutoCloseable {
                 session.close();
             }
         }
-        return item;
+        return null;
     }
 
     @Override

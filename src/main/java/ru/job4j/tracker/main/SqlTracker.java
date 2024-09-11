@@ -1,5 +1,8 @@
 package ru.job4j.tracker.main;
 
+import ru.job4j.tracker.main.model.Item;
+import ru.job4j.tracker.main.model.User;
+
 import java.io.*;
 import java.sql.*;
 import java.util.*;
@@ -144,7 +147,8 @@ public class SqlTracker implements Store, AutoCloseable {
             item = new Item(
                     resultSet.getInt("id"),
                     resultSet.getString("name"),
-                    resultSet.getTimestamp("created").toLocalDateTime());
+                    resultSet.getTimestamp("created").toLocalDateTime(),
+                    (List<User>) resultSet.getObject("participates"));
         } catch (Exception e) {
             e.printStackTrace();
         }

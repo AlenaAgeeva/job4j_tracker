@@ -7,6 +7,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
+import ru.job4j.tracker.main.model.Item;
 
 import java.util.Collections;
 import java.util.List;

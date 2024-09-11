@@ -13,6 +13,9 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
-        <mapping class="ru.job4j.tracker.main.Item"/>
+        <mapping class="ru.job4j.tracker.main.model.Item"/>
+        <mapping class="ru.job4j.tracker.main.model.User"/>
+        <mapping class="ru.job4j.tracker.main.model.Role"/>
+        <mapping class="ru.job4j.tracker.main.model.UserMessenger" />
     </session-factory>
 </hibernate-configuration>

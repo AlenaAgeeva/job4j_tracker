@@ -1,5 +1,7 @@
 package ru.job4j.tracker.main;
 
+import ru.job4j.tracker.main.model.Item;
+
 import java.util.List;
 
 public interface Store {

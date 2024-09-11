@@ -2,7 +2,7 @@ package ru.job4j.tracker.collection;
 
 import org.junit.Assert;
 import org.junit.Test;
-import ru.job4j.tracker.main.Item;
+import ru.job4j.tracker.main.model.Item;
 
 import java.util.ArrayList;
 import java.util.Collections;

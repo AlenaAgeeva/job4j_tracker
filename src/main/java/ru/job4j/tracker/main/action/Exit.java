@@ -1,9 +1,13 @@
-package ru.job4j.tracker.main;
+package ru.job4j.tracker.main.action;
 
-public class ExitAction implements UserAction {
+import ru.job4j.tracker.main.input.Input;
+import ru.job4j.tracker.main.output.Output;
+import ru.job4j.tracker.main.store.Store;
+
+public class Exit implements UserAction {
     private final Output out;
 
-    public ExitAction(Output out) {
+    public Exit(Output out) {
         this.out = out;
     }
 

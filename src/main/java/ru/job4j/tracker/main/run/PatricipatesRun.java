@@ -76,7 +76,7 @@ public class PatricipatesRun {
     public static List<Item> findAll(SessionFactory sf) {
         Session session = sf.openSession();
         session.beginTransaction();
-        List result = session.createQuery("from ru.job4j.tracker.main.Item").list();
+        List result = session.createQuery("from Item").list();
         session.getTransaction().commit();
         session.close();
         return result;

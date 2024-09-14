@@ -3,7 +3,13 @@ package ru.job4j.tracker;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.job4j.tracker.main.*;
+import ru.job4j.tracker.main.action.*;
+import ru.job4j.tracker.main.input.Input;
+import ru.job4j.tracker.main.input.StubInput;
 import ru.job4j.tracker.main.model.Item;
+import ru.job4j.tracker.main.output.Output;
+import ru.job4j.tracker.main.output.StubOutput;
+import ru.job4j.tracker.main.tracker.MemTracker;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,7 +29,7 @@ public class StartUITest {
         Input in = new StubInput(new ArrayList<>(List.of("0", "Item name", "1")));
         Output out = new StubOutput();
         MemTracker tracker = new MemTracker();
-        List<UserAction> actions = new ArrayList<>(Arrays.asList(new CreateAction(out), new ExitAction(out)));
+        List<UserAction> actions = new ArrayList<>(Arrays.asList(new Create(out), new Exit(out)));
         new StartUI(out).init(in, tracker, actions);
         Assert.assertEquals(tracker.findAll().get(0).getName(), "Item name");
     }
@@ -35,7 +41,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Input in = new StubInput(new ArrayList<>(List.of("0", String.valueOf(item.getId()), replacedName, "1")));
-        List<UserAction> actions = new ArrayList<>(List.of(new ReplaceItemAction(out), new ExitAction(out)));
+        List<UserAction> actions = new ArrayList<>(List.of(new ReplaceItem(out), new Exit(out)));
         new StartUI(out).init(in, tracker, actions);
         Assert.assertEquals(tracker.findById(item.getId()).getName(), replacedName);
     }
@@ -46,7 +52,7 @@ public class StartUITest {
         Output out = new StubOutput();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(new ArrayList<>(List.of("0", String.valueOf(item.getId()), "1")));
-        List<UserAction> actions = new ArrayList<>(List.of(new DeleteItemAction(out), new ExitAction(out)));
+        List<UserAction> actions = new ArrayList<>(List.of(new DeleteItem(out), new Exit(out)));
         new StartUI(out).init(in, tracker, actions);
         assertNull(tracker.findById(item.getId()));
     }
@@ -56,7 +62,7 @@ public class StartUITest {
         Output out = new StubOutput();
         Input in = new StubInput(new ArrayList<>(List.of("0")));
         MemTracker tracker = new MemTracker();
-        List<UserAction> actions = new ArrayList<>(List.of(new ExitAction(out)));
+        List<UserAction> actions = new ArrayList<>(List.of(new Exit(out)));
         new StartUI(out).init(in, tracker, actions);
         Assert.assertEquals(out.toString(),
                 "Menu." + System.lineSeparator()
@@ -72,7 +78,7 @@ public class StartUITest {
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         Input in = new StubInput(new ArrayList<>(List.of("0", String.valueOf(one.getId()), replaceName, "1")));
-        List<UserAction> actions = new ArrayList<>(List.of(new ReplaceItemAction(out), new ExitAction(out)));
+        List<UserAction> actions = new ArrayList<>(List.of(new ReplaceItem(out), new Exit(out)));
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
         Assert.assertEquals(out.toString(),
@@ -94,7 +100,7 @@ public class StartUITest {
         MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new StubInput(new ArrayList<>(List.of("0", "1")));
-        List<UserAction> actions = new ArrayList<>(List.of(new ShowAllAction(out), new ExitAction(out)));
+        List<UserAction> actions = new ArrayList<>(List.of(new ShowAll(out), new Exit(out)));
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
         Assert.assertEquals(out.toString(),
@@ -117,7 +123,7 @@ public class StartUITest {
         Item one = tracker.add(new Item("test1"));
         String findName = "test1";
         Input in = new StubInput(new ArrayList<>(List.of("0", findName, "1")));
-        List<UserAction> actions = new ArrayList<>(List.of(new FindItemsByNamesAction(out), new ExitAction(out)));
+        List<UserAction> actions = new ArrayList<>(List.of(new FindItemsByNames(out), new Exit(out)));
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
         Assert.assertEquals(out.toString(),
@@ -139,7 +145,7 @@ public class StartUITest {
         MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new StubInput(new ArrayList<>(List.of("0", String.valueOf(one.getId()), "1")));
-        List<UserAction> actions = new ArrayList<>(List.of(new FindItemByIdAction(out), new ExitAction(out)));
+        List<UserAction> actions = new ArrayList<>(List.of(new FindItemById(out), new Exit(out)));
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
         Assert.assertEquals(out.toString(),
@@ -160,7 +166,7 @@ public class StartUITest {
         Output out = new StubOutput();
         Input in = new StubInput(new ArrayList<>(List.of("-1", "0")));
         MemTracker tracker = new MemTracker();
-        List<UserAction> actions = new ArrayList<>(List.of(new ExitAction(out)));
+        List<UserAction> actions = new ArrayList<>(List.of(new Exit(out)));
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
         Assert.assertEquals(out.toString(),
@@ -180,7 +186,7 @@ public class StartUITest {
         MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
-        ReplaceItemAction replaceAction = new ReplaceItemAction(output);
+        ReplaceItem replaceAction = new ReplaceItem(output);
         Input input = mock(Input.class);
         when(input.askInt(any(String.class))).thenReturn(item.getId());
         when(input.askStr(any(String.class))).thenReturn(replacedName);
@@ -196,7 +202,7 @@ public class StartUITest {
         MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
-        ReplaceItemAction replaceAction = new ReplaceItemAction(output);
+        ReplaceItem replaceAction = new ReplaceItem(output);
         Input input = mock(Input.class);
         replaceAction.execute(input, tracker);
         String ln = System.lineSeparator();
@@ -209,10 +215,10 @@ public class StartUITest {
         Output output = new StubOutput();
         MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("New item"));
-        DeleteItemAction deleteItemAction = new DeleteItemAction(output);
+        DeleteItem deleteItem = new DeleteItem(output);
         Input input = mock(Input.class);
         when(input.askInt(any(String.class))).thenReturn(item.getId());
-        deleteItemAction.execute(input, tracker);
+        deleteItem.execute(input, tracker);
         String ln = System.lineSeparator();
         assertEquals(output.toString(), "=== Delete item ===" + ln
                 + "Заявка удалена успешно." + ln);
@@ -223,9 +229,9 @@ public class StartUITest {
         Output output = new StubOutput();
         MemTracker tracker = new MemTracker();
         tracker.add(new Item("New item"));
-        DeleteItemAction deleteItemAction = new DeleteItemAction(output);
+        DeleteItem deleteItem = new DeleteItem(output);
         Input input = mock(Input.class);
-        deleteItemAction.execute(input, tracker);
+        deleteItem.execute(input, tracker);
         String ln = System.lineSeparator();
         assertEquals(output.toString(), "=== Delete item ===" + ln
                 + "Ошибка удаления заявки." + ln);
@@ -236,7 +242,7 @@ public class StartUITest {
         Output output = new StubOutput();
         MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("New item"));
-        FindItemByIdAction findItemByIdAction = new FindItemByIdAction(output);
+        FindItemById findItemByIdAction = new FindItemById(output);
         Input input = mock(Input.class);
         when(input.askInt(any(String.class))).thenReturn(item.getId());
         findItemByIdAction.execute(input, tracker);
@@ -250,7 +256,7 @@ public class StartUITest {
         Output output = new StubOutput();
         MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("New item"));
-        FindItemByIdAction findItemByIdAction = new FindItemByIdAction(output);
+        FindItemById findItemByIdAction = new FindItemById(output);
         Input input = mock(Input.class);
         findItemByIdAction.execute(input, tracker);
         String ln = System.lineSeparator();
@@ -265,7 +271,7 @@ public class StartUITest {
         Item item1 = tracker.add(new Item("New item1"));
         Item item2 = tracker.add(new Item("New item2"));
         Item item3 = tracker.add(new Item("New item3"));
-        FindItemsByNamesAction findItemsByNamesAction = new FindItemsByNamesAction(output);
+        FindItemsByNames findItemsByNamesAction = new FindItemsByNames(output);
         Input input = mock(Input.class);
         String ln = System.lineSeparator();
         when(input.askStr(any(String.class))).thenReturn(item1.getName());
@@ -290,7 +296,7 @@ public class StartUITest {
         Item item1 = tracker.add(new Item("New item1"));
         Item item2 = tracker.add(new Item("New item2"));
         Item item3 = tracker.add(new Item("New item3"));
-        FindItemsByNamesAction findItemsByNamesAction = new FindItemsByNamesAction(output);
+        FindItemsByNames findItemsByNamesAction = new FindItemsByNames(output);
         Input input = mock(Input.class);
         String ln = System.lineSeparator();
         when(input.askStr(any(String.class))).thenReturn(item3.getName() + "a");

@@ -1,0 +1,10 @@
+INSERT INTO items (name, created) VALUES ('Item A', NOW());
+INSERT INTO items (name, created) VALUES ('Item B', NOW());
+INSERT INTO items (name, created) VALUES ('Item C', NOW());
+INSERT INTO items (name, created) VALUES ('Item D', NOW());
+INSERT INTO items (name, created) VALUES ('Item E', NOW());
+INSERT INTO items (name, created) VALUES ('Item F', NOW());
+INSERT INTO items (name, created) VALUES ('Item G', NOW());
+INSERT INTO items (name, created) VALUES ('Item H', NOW());
+INSERT INTO items (name, created) VALUES ('Item I', NOW());
+INSERT INTO items (name, created) VALUES ('Item J', NOW());

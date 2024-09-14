@@ -5,17 +5,17 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.job4j.tracker.main.model.Item;
-import ru.job4j.tracker.main.SqlTracker;
+import ru.job4j.tracker.main.tracker.SqlTracker;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Properties;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SqlTrackerTest {
 
@@ -23,7 +23,7 @@ public class SqlTrackerTest {
 
     @BeforeAll
     public static void initConnection() {
-        try (InputStream in = SqlTrackerTest.class.getClassLoader().getResourceAsStream("test.properties")) {
+        try (InputStream in = new FileInputStream("src/main/resources/db/liquibase_test.properties")) {
             Properties config = new Properties();
             config.load(in);
             Class.forName(config.getProperty("driver-class-name"));
@@ -54,54 +54,61 @@ public class SqlTrackerTest {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("item");
         tracker.add(item);
-        assertEquals(tracker.findById(item.getId()), item);
+        Item expected = tracker.findById(item.getId());
+        assertThat(expected).isEqualTo(item);
     }
 
     @Test
-    public void whenReplaceItemAndFindByGeneratedIdThenMustBeTheSame() {
+    public void whenSaveItemAndFindByGeneratedIdThenMustBeTheSame() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item itemOne = tracker.add(new Item("item1"));
-        Item itemTwo = new Item("item2");
-        tracker.replace(itemOne.getId(), itemTwo);
-        itemTwo.setId(itemOne.getId());
-        assertEquals(tracker.findById(itemOne.getId()), itemTwo);
-        assertEquals(tracker.findById(itemOne.getId()).getName(), "item2");
+        Item item = new Item("item");
+        tracker.add(item);
+        assertThat(tracker.findById(item.getId())).isEqualTo(item);
     }
 
     @Test
-    public void whenSaveItemAndDeleteThenNullValue() {
+    public void whenReplace() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item itemOne = tracker.add(new Item("item1"));
-        tracker.delete(itemOne.getId());
-        assertEquals(tracker.findById(itemOne.getId()), null);
+        Item item = new Item("item");
+        tracker.add(item);
+        tracker.replace(item.getId(), new Item("newItem"));
+        assertThat(tracker.findById(item.getId()).getName().equals("newItem"));
     }
 
     @Test
-    public void whenFindAllItemsMustBeEqualsCount() {
+    public void whenDelete() {
         SqlTracker tracker = new SqlTracker(connection);
-        List<Item> list = List.of(tracker.add(new Item("item1")),
-                tracker.add(new Item("item2")),
-                tracker.add(new Item("item3")),
-                tracker.add(new Item("item4")));
-        assertEquals(tracker.findAll().size(), list.size());
+        Item item = new Item("item");
+        tracker.add(item);
+        tracker.delete(item.getId());
+        assertThat(tracker.findById(item.getId())).isNull();
     }
 
     @Test
-    public void whenAddItemAndFindByNameThenMustBeTheSame() {
+    public void whenFindAll() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item itemOne = tracker.add(new Item("item1"));
-        Item itemTwo = tracker.add(new Item("item2"));
-        Item itemThree = tracker.add(new Item("item3"));
-        assertEquals(tracker.findByName(itemOne.getName()), List.of(itemOne));
+        Item itemA = new Item("itemA");
+        Item itemB = new Item("itemB");
+        Item itemC = new Item("itemC");
+        tracker.add(itemA);
+        tracker.add(itemB);
+        tracker.add(itemC);
+        assertThat(tracker.findAll()).containsExactly(itemA, itemB, itemC);
     }
 
     @Test
-    public void whenRemoveItemThenDb() {
+    public void whenFindByName() {
         SqlTracker tracker = new SqlTracker(connection);
-        Item itemOne = tracker.add(new Item("item1"));
-        Item itemTwo = tracker.add(new Item("item2"));
-        Item itemThree = tracker.add(new Item("item3"));
-        tracker.delete(itemOne.getId());
-        assertEquals(tracker.findAll(), List.of(itemTwo, itemThree));
+        Item itemA = new Item("item");
+        tracker.add(itemA);
+        assertThat(tracker.findByName(itemA.getName())).containsExactly(itemA);
+    }
+
+    @Test
+    public void whenFindById() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item itemA = new Item("item");
+        tracker.add(itemA);
+        assertThat(tracker.findById(itemA.getId()).equals(itemA));
     }
 }

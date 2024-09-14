@@ -1,13 +1,16 @@
-package ru.job4j.tracker.main;
+package ru.job4j.tracker.main.action;
 
+import ru.job4j.tracker.main.input.Input;
+import ru.job4j.tracker.main.output.Output;
+import ru.job4j.tracker.main.store.Store;
 import ru.job4j.tracker.main.model.Item;
 
 import java.sql.SQLException;
 
-public class CreateManyItemsAction implements UserAction {
+public class CreateManyItems implements UserAction {
     private final Output out;
 
-    public CreateManyItemsAction(Output out) {
+    public CreateManyItems(Output out) {
         this.out = out;
     }
 

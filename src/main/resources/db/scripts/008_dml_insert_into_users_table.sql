@@ -1,0 +1,10 @@
+INSERT INTO j_user (name, role_id) VALUES ('Alice Johnson', 1);
+INSERT INTO j_user (name, role_id) VALUES ('Bob Smith', 2);
+INSERT INTO j_user (name, role_id) VALUES ('Charlie Brown', 1);
+INSERT INTO j_user (name, role_id) VALUES ('Diana Prince', 3);
+INSERT INTO j_user (name, role_id) VALUES ('Edward Elric', 2);
+INSERT INTO j_user (name, role_id) VALUES ('Fiona Gallagher', 1);
+INSERT INTO j_user (name, role_id) VALUES ('George Washington', 3);
+INSERT INTO j_user (name, role_id) VALUES ('Hannah Montana', 2);
+INSERT INTO j_user (name, role_id) VALUES ('Ian Stuart', 1);
+INSERT INTO j_user (name, role_id) VALUES ('Julia Roberts', 3);

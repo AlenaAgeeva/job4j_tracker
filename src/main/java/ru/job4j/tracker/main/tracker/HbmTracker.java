@@ -1,4 +1,4 @@
-package ru.job4j.tracker.main;
+package ru.job4j.tracker.main.tracker;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,6 +7,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
+import ru.job4j.tracker.main.store.Store;
 import ru.job4j.tracker.main.model.Item;
 
 import java.util.Collections;

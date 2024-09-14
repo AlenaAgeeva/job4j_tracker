@@ -1,5 +1,6 @@
-package ru.job4j.tracker.main;
+package ru.job4j.tracker.main.tracker;
 
+import ru.job4j.tracker.main.store.Store;
 import ru.job4j.tracker.main.model.Item;
 import ru.job4j.tracker.main.model.User;
 

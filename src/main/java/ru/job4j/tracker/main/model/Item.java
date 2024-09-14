@@ -14,12 +14,16 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Item {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm");
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private int id;
+    @EqualsAndHashCode.Include
     private String name;
+    @EqualsAndHashCode.Include
     private LocalDateTime created = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
     @ManyToMany
     @JoinTable(

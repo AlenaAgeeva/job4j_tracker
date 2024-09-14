@@ -2,7 +2,11 @@ package ru.job4j.tracker;
 
 import org.junit.Assert;
 import org.junit.Test;
-import ru.job4j.tracker.main.*;
+import ru.job4j.tracker.main.input.Input;
+import ru.job4j.tracker.main.input.StubInput;
+import ru.job4j.tracker.main.input.ValidateInput;
+import ru.job4j.tracker.main.output.Output;
+import ru.job4j.tracker.main.output.StubOutput;
 
 import java.util.ArrayList;
 import java.util.List;

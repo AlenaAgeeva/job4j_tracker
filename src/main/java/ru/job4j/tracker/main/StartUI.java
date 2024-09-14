@@ -1,5 +1,14 @@
 package ru.job4j.tracker.main;
 
+import ru.job4j.tracker.main.action.*;
+import ru.job4j.tracker.main.input.ConsoleInput;
+import ru.job4j.tracker.main.input.Input;
+import ru.job4j.tracker.main.input.ValidateInput;
+import ru.job4j.tracker.main.output.ConsoleOutput;
+import ru.job4j.tracker.main.output.Output;
+import ru.job4j.tracker.main.store.Store;
+import ru.job4j.tracker.main.tracker.SqlTracker;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -34,19 +43,19 @@ public class StartUI {
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
-        MemTracker tracker = new MemTracker();
-        try /*(SqlTracker tracker = new SqlTracker())*/ {
-            /*tracker.init();*/
+        /*MemTracker tracker = new MemTracker();*/
+        try (SqlTracker tracker = new SqlTracker()) {
+            tracker.init();
             List<UserAction> actions = List.of(
-                    new CreateAction(output),
-                    new CreateManyItemsAction(output),
-                    new ReplaceItemAction(output),
-                    new DeleteItemAction(output),
-                    new DeleteManyItemsAction(output),
-                    new ShowAllAction(output),
-                    new FindItemByIdAction(output),
-                    new FindItemsByNamesAction(output),
-                    new ExitAction(output)
+                    new Create(output),
+                    new CreateManyItems(output),
+                    new ReplaceItem(output),
+                    new DeleteItem(output),
+                    new DeleteManyItems(output),
+                    new ShowAll(output),
+                    new FindItemById(output),
+                    new FindItemsByNames(output),
+                    new Exit(output)
             );
             new StartUI(output).init(input, tracker, actions);
         } catch (Exception e) {

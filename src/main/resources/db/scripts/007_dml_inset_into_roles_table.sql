@@ -1,0 +1,10 @@
+INSERT INTO j_role (name) VALUES ('Administrator');
+INSERT INTO j_role (name) VALUES ('Editor');
+INSERT INTO j_role (name) VALUES ('Viewer');
+INSERT INTO j_role (name) VALUES ('Moderator');
+INSERT INTO j_role (name) VALUES ('Contributor');
+INSERT INTO j_role (name) VALUES ('Subscriber');
+INSERT INTO j_role (name) VALUES ('Manager');
+INSERT INTO j_role (name) VALUES ('Analyst');
+INSERT INTO j_role (name) VALUES ('Customer Support');
+INSERT INTO j_role (name) VALUES ('Developer');

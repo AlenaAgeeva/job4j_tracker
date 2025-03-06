@@ -7,10 +7,10 @@ import ru.job4j.tracker.main.model.Item;
 
 import java.util.List;
 
-public class ShowAll implements UserAction {
+public class ShowAllAction implements UserAction {
     private final Output out;
 
-    public ShowAll(Output out) {
+    public ShowAllAction(Output out) {
         this.out = out;
     }
 

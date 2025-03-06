@@ -7,10 +7,10 @@ import ru.job4j.tracker.main.model.Item;
 
 import java.util.List;
 
-public class FindItemsByNames implements UserAction {
+public class FindItemsByNamesAction implements UserAction {
     private final Output out;
 
-    public FindItemsByNames(Output out) {
+    public FindItemsByNamesAction(Output out) {
         this.out = out;
     }
 

@@ -5,10 +5,10 @@ import ru.job4j.tracker.main.output.Output;
 import ru.job4j.tracker.main.store.Store;
 import ru.job4j.tracker.main.model.Item;
 
-public class FindItemById implements UserAction {
+public class FindItemByIdAction implements UserAction {
     private final Output out;
 
-    public FindItemById(Output out) {
+    public FindItemByIdAction(Output out) {
         this.out = out;
     }
 

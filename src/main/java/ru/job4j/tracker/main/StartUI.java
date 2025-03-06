@@ -47,15 +47,15 @@ public class StartUI {
         try (SqlTracker tracker = new SqlTracker()) {
             tracker.init();
             List<UserAction> actions = List.of(
-                    new Create(output),
-                    new CreateManyItems(output),
-                    new ReplaceItem(output),
-                    new DeleteItem(output),
-                    new DeleteManyItems(output),
-                    new ShowAll(output),
-                    new FindItemById(output),
-                    new FindItemsByNames(output),
-                    new Exit(output)
+                    new CreateAction(output),
+                    new CreateManyItemsAction(output),
+                    new ReplaceItemAction(output),
+                    new DeleteItemAction(output),
+                    new DeleteManyItemsAction(output),
+                    new ShowAllAction(output),
+                    new FindItemByIdAction(output),
+                    new FindItemsByNamesAction(output),
+                    new ExitAction(output)
             );
             new StartUI(output).init(input, tracker, actions);
         } catch (Exception e) {

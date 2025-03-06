@@ -1,7 +1,5 @@
 package ru.job4j.tracker.main.input;
 
-import ru.job4j.tracker.main.input.Input;
-
 import java.util.List;
 
 public class StubInput implements Input {
